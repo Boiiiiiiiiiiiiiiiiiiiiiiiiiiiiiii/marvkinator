@@ -19,13 +19,14 @@ The very first thing i did was searching for how the original Akinator works in 
 -**Akinator has a database which contains dozens of characters, each of which have a wide range of traits. **
 
 There were a lot of assumptions regarding the logic of the akgorithm, from sofisticated statistics and confidence rates for each characers to decision trees and LLMs. Since i lack both skills to create a good decision tree model or to create convoluted statistic alforithms, i decided to use one of the most basic theorems in statistics - Bayes' theorem. The basic idea of ​​Bayes' theorem is simple and consists of the following:
+
 Imagine that you have a statement - "A random person who has glasses is more likely to be a librarian than an athlete". The probability that the statement is true is equal to the following: 
 | Number of examples where hypothesis is true |
 |:--------------------------------------------:|
 | Number of examples where hypothesis is true + Number of examples where hypothesis is false |
 
 To generalize this example, we need to break the original statement into a hypothesis and evidence. The hypothesis is "A random person, based on the available evidence, is more likely to be a librarian than an athlete," and the evidence is "The person has glasses." Now, we can turn the example above into:
-\[
-\frac{\text{Number of examples where hypothesis is true given the evidence}}{\text{Number of examples where hypothesis is true given the evidence} + \text{Number of examples where hypothesis is false given the evidence} \text{(or just the number of example which fit the evidence)}}
-\]
+| Number of examples where hypothesis is true given the evidence |
+|:--------------------------------------------------------------:|
+| Number of examples where hypothesis is true given the evidence + Number of examples where hypothesis is false given the evidence (or just the number of examples which fit the evidence) |
 
