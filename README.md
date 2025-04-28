@@ -30,3 +30,23 @@ To generalize this example, we need to break the original statement into a hypot
 |:--------------------------------------------------------------:|
 | Number of examples where hypothesis is true given the evidence + Number of examples where hypothesis is false given the evidence (or just the number of examples which fit the evidence) |
 
+Now that we know this idea, we can apply it to Akinator. Knowing that each character in the database has a certain set of traits like "has_a_mask: true, is_a_villain: false", we can use the already known data about the character as evidence, and all the other traits to form a claim.
+
+Example:
+
+Imagine that from the player's answers we know that the character has a mask and the character does not have a weapon. This is our evidence. Now, we can form a claim with this evidence for all the other traits in the database. For example, if the characters also have traits like "has_a_suit, uses_magic", then we can form two more claims:
+
+"The character has a suit when given that he has a mask and does not have a weapon" and "The character uses magic when given that he has a mask and does not have a weapon".
+
+Now, we can look at the number of characters in the database that match these claims, and calculate the probability that the claim is true, that is, the probability that the character has this or that trait.
+
+Now, knowing this, we can choose which question to ask the player. I decided to ask the player a question that corresponds to the trait with the lowest probability of the hero to have, because if the answer to the question is "Yes", we will cut off the maximum number of heroes from the available answers.
+
+Example:
+The player answered that his character has the following traits: "has_a_suit" and "uses_magic". In the database, among the characters that match the player's given traits, the following traits are found in the following quantities:
+
+"has_a_mask": 5 times
+
+"uses_magic": 8 times
+
+Since the trait that occurs less often is obviously less likely to occur, Akinator chooses this trait as a target and asks the player something like: "Does your character use magic?"
