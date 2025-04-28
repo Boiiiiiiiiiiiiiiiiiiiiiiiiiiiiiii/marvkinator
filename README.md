@@ -13,7 +13,7 @@ Then, press "Run and Debug" to launch the app in the emulator. For a full tutori
 [Video](https://docs.flutter.dev/get-started/codelab). 
 [Text](https://docs.flutter.dev/)
 
-To get the project apk to run on android devices, download the app-release.apk file from build/outputs/flutter-apk/app-release.apk.
+To get the project apk to run on android devices, run '''flutter build apk''' and then download the app-release.apk file from build/outputs/flutter-apk/app-release.apk.
 
 ## Development process
 
