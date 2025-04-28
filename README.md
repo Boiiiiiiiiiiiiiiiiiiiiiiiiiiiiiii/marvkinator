@@ -1,6 +1,7 @@
 # akinator
 
 This is a little Akinator game that guesses popular marvel characters for android and ios using Bayes' theorem as base for its algorithm. 
+Go to [this video](https://youtu.be/3HChkHzhJ0M) to see the demo
 
 ## Getting Started
 
