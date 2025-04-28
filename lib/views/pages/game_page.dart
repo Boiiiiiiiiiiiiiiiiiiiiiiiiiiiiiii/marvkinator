@@ -282,7 +282,6 @@ class _GamePageState extends State<GamePage> {
   }
 
   void proceedTheGame() async {
-    if(!mounted) return;
     try {
       Map<String, dynamic> response = await fetchBestTrait(traitScores);
 
@@ -307,9 +306,11 @@ class _GamePageState extends State<GamePage> {
         fetchQuestion(trait);
         reductionRateNorifier.value = response['ratio'];
       } else {
+        if(!mounted) return;
         handleErrors(context, error);
       }
     } catch (e) {
+      if(!mounted) return;
       handleErrors(context, e);
     }
   }
