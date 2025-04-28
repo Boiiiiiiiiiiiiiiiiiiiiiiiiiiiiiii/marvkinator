@@ -25,7 +25,7 @@ There were a lot of assumptions regarding the logic of the algorithm, from sofis
 Imagine that you have a statement - "A random person who has glasses is more likely to be a librarian than an athlete". The probability that the statement is true is equal to the following: 
 | Number of librarians with glasses |
 |:--------------------------------------------:|
-| Number of librarians with glasses + Number of sportsmen with glasses |
+| Number of librarians with glasses + Number of athletes with glasses |
 
 To generalize this example, we need to break the original statement into a hypothesis and evidence. The hypothesis is "A random person, based on the available evidence, is more likely to be a librarian than an athlete," and the evidence is "The person has glasses." Now, we can turn the example above into:
 
@@ -33,15 +33,15 @@ To generalize this example, we need to break the original statement into a hypot
 |:--------------------------------------------------------------:|
 | Number of examples where hypothesis is true given the evidence + Number of examples where hypothesis is false given the evidence (or just the number of examples which fit the evidence) |
 
-Now that we know this idea, we can apply it to Akinator. Knowing that each character in the database has a certain set of traits like "has_a_mask: true, is_a_villain: false", we can use the already known data about the character as evidence, and all the other traits to form a claim.
+Now that we know this idea, we can apply it to Akinator. Knowing that each character in the database has a certain set of traits like "has_a_mask: true, is_a_villain: false", we can use the already known data about the character as evidence, and all the other traits to form a statement.
 
 Example:
 
-Imagine that from the player's answers we know that the character has a mask and the character does not have a weapon. This is our evidence. Now, we can form a claim with this evidence for all the other traits in the database. For example, if the characters also have traits like _"has_a_suit, uses_magic"_, then we can form two more claims:
+Imagine that from the player's answers we know that the character has a mask and the character does not have a weapon. This is our evidence. Now, we can form a statement with this evidence for all the other traits in the database. For example, if the characters also have traits like _"has_a_suit, uses_magic"_, then we can form two more statements:
 
 _"The character has a suit when given that he has a mask and does not have a weapon"_ and _"The character uses magic when given that he has a mask and does not have a weapon"_.
 
-Now, we can look at the number of characters in the database that match these claims, and calculate the probability that the claim is true, that is, the probability that the character has this or that trait.
+Now, we can look at the number of characters in the database that match these statements, and calculate the probability that the statement is true, that is, the probability that the character has this or that trait.
 
 Now, knowing this, we can choose which question to ask the player. I decided to ask the player a question that corresponds to the trait with the lowest probability of the hero to have, because if the answer to the question is "Yes", we will cut off the maximum number of heroes from the available answers.
 
@@ -54,15 +54,15 @@ The player answered that his character has the following traits: "has_a_suit" an
 
 Since the trait that occurs less often is obviously less likely to occur, Akinator chooses this trait as a target and asks the player something like: "Does your character use magic?"
 
-Now that we know this idea, we can apply it to Akinator. Knowing that each character in the database has a certain set of traits like "has_a_mask: true, is_a_villain: false", we can use the already known data about the character as evidence, and all the other traits to form a claim.
+Now that we know this idea, we can apply it to Akinator. Knowing that each character in the database has a certain set of traits like "has_a_mask: true, is_a_villain: false", we can use the already known data about the character as evidence, and all the other traits to form a statement.
 
 Example:
 
-Imagine that from the player's answers we know that the character has a mask and the character does not have a weapon. This is our evidence. Now, we can form a claim with this evidence for all the other traits in the database. For example, if the characters also have traits like "has_a_suit, uses_magic", then we can form two more claims:
+Imagine that from the player's answers we know that the character has a mask and the character does not have a weapon. This is our evidence. Now, we can form a statement with this evidence for all the other traits in the database. For example, if the characters also have traits like "has_a_suit, uses_magic", then we can form two more statements:
 
 "The character has a suit when given that he has a mask and does not have a weapon" and "The character uses magic when given that he has a mask and does not have a weapon".
 
-Now, we can look at the number of characters in the database that match these claims, and calculate the probability that the claim is true, that is, the probability that the character has this or that trait.
+Now, we can look at the number of characters in the database that match these statements, and calculate the probability that the statement is true, that is, the probability that the character has this or that trait.
 
 Now, knowing this, we can choose which question to ask the player. I decided to ask the player a question that corresponds to the trait with the lowest probability of the hero to have, because if the answer to the question is "Yes", we will cut off the maximum number of heroes from the available answers.
 
@@ -88,14 +88,22 @@ Since my algorithm is quite simple (and I couldn't come up with a solution to th
 ## Known errors and problems
 
 -The database is very tiny. As of now, there are only 25 available characters to guess, and each character has 50~ traits. This leads to the problems like Akinator being able to "guess" the character by one question. For example, there's only one charater who is teenager in the db-Spider-man, so if Akinator happens to choose to ask if the character is a teenager as his first question and the answer happens to be "Yes", Akinator will "guess" the Spider-man instantly. 
+
 -The app does not handle cases where there are two characters with exact same traits left. I'm здфттштп to add a екфше - frequency of choosing this character, so that Akinator would give out the character with greater frequency in such cases
+
 -The parts of the app which interact with the database are slow. 
 
 ## Stack
 -Flutter: frontend and logic
+
 -MySQL: Database type
+
 -PHP: For api.
+
 -Clever cloud: database and api deployment. 
+
 Flutter was chosen because Akinator does not require complicated UI, so making it on flutter saves a lot of time that would be spent on creating the UI and UX. Flutter also lets easily build the app for web, ios and android, so that i can test and deploy the app on any platforms.
+
 Both MySQL and PHP was chosen because hese are the technologies i have the most experience with thanks to my school, and because they were convenient for the implementation of the task.
+
 Clever cloud was chosen because it is free, lets easily deploy a MySQL database, start a web service based on php, provides enough storage space and does not go to "sleep" due to inactivity.
