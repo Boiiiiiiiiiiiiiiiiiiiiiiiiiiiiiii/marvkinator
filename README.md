@@ -16,7 +16,7 @@ Then, press "Run and Debug" to launch the app in the emulator. For a full tutori
 
 The very first thing i did was searching for how the original Akinator works in the internet, and choosing the algorithm whhich best suits my skills. Since the Akinator team keeps their algorithm secret, all i could find was people's assumptions and suggestions, so i decided to find the most occuring trends among them and come up with my own algorithm. The main point in all of them was:
 
--**Akinator has a database which contains dozens of characters, each of which have a wide range of traits. **
+-**Akinator has a database which contains dozens of characters, each of which have a wide range of traits.**
 
 There were a lot of assumptions regarding the logic of the akgorithm, from sofisticated statistics and confidence rates for each characers to decision trees and LLMs. Since i lack both skills to create a good decision tree model or to create convoluted statistic alforithms, i decided to use one of the most basic theorems in statistics - Bayes' theorem. The basic idea of ​​Bayes' theorem is simple and consists of the following:
 
