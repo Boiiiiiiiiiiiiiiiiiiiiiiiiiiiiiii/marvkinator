@@ -222,6 +222,7 @@ class _GamePageState extends State<GamePage> {
     Uri uri = Uri.https('app-a2989357-1f55-4709-adfc-df0a25cdbbd8.cleverapps.io', '/trait_by_question.php', {
       'question': question
     });
+    print("QUESTION URI: $uri");
 
     //print("Fetching from: ${uri.toString()}"); // дебаг
 
