@@ -193,7 +193,7 @@ class _GamePageState extends State<GamePage> {
 
   //получить вопрос по трейту
   void fetchQuestion(String trait) async{
-    Uri uri = Uri.https('app-9d98040c-946d-4efe-af72-3a67343c30cc.cleverapps.io', '/question.php', {
+    Uri uri = Uri.https('app-a2989357-1f55-4709-adfc-df0a25cdbbd8.cleverapps.io', '/question.php', {
       'trait': trait
     });
 
@@ -219,7 +219,7 @@ class _GamePageState extends State<GamePage> {
   //я знаю что этот и верхний скрипт можно было объединить каким то хитрым образом
   //я слишком тупой, give me a break
   Future<String> fetchTraitByQuestion(String question) async {
-    Uri uri = Uri.https('app-9d98040c-946d-4efe-af72-3a67343c30cc.cleverapps.io', '/trait_by_question.php', {
+    Uri uri = Uri.https('app-a2989357-1f55-4709-adfc-df0a25cdbbd8.cleverapps.io', '/trait_by_question.php', {
       'question': question
     });
 
@@ -244,7 +244,7 @@ class _GamePageState extends State<GamePage> {
   //пикнуть наименее встречающийся трейт исходя из трейтов которые у нас есть
   Future<Map<String, dynamic>> fetchBestTrait(Map<String, String> traitScores) async {
     // Строим query-параметры
-    Uri uri = Uri.https('app-9d98040c-946d-4efe-af72-3a67343c30cc.cleverapps.io', '/fetch_least_trait.php', traitScores);
+    Uri uri = Uri.https('app-a2989357-1f55-4709-adfc-df0a25cdbbd8.cleverapps.io', '/fetch_least_trait.php', traitScores);
 
     http.Response response = await http.get(
       uri,
@@ -253,6 +253,8 @@ class _GamePageState extends State<GamePage> {
         'Content-Type': 'application/json; charset=UTF-8',
       },
     );
+    var body = response.body;
+    print("Response: $body");
 
     if (response.statusCode == 200) {
       Map<String, dynamic> res = jsonDecode(response.body);
@@ -263,7 +265,7 @@ class _GamePageState extends State<GamePage> {
   }
 
   Future<Map<String, dynamic>> fetchHeroById(int id) async{
-    Uri uri = Uri.https('app-9d98040c-946d-4efe-af72-3a67343c30cc.cleverapps.io', '/fetch_hero_by_id.php', {"id":id.toString()});
+    Uri uri = Uri.https('app-a2989357-1f55-4709-adfc-df0a25cdbbd8.cleverapps.io', '/fetch_hero_by_id.php', {"id":id.toString()});
 
     http.Response response = await http.get(
       uri,
