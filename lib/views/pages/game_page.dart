@@ -245,6 +245,7 @@ class _GamePageState extends State<GamePage> {
   Future<Map<String, dynamic>> fetchBestTrait(Map<String, String> traitScores) async {
     // Строим query-параметры
     Uri uri = Uri.https('app-a2989357-1f55-4709-adfc-df0a25cdbbd8.cleverapps.io', '/fetch_least_trait.php', traitScores);
+    print("URI: $uri");
 
     http.Response response = await http.get(
       uri,
